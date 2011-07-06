@@ -7,7 +7,7 @@ use Rack::TryStatic,
     :try => ['.html', 'index.html', '/index.html'] # try these postfixes sequentially
 
 app = lambda do |env|
-    [ 200, {'Content-Type' => 'text/html'}, ['Not Found!'] ]
+  [ 404, {'Content-Type' => 'text/html'}, File.readlines('_site/404.html') ]
 end
 
-run app
+run Rack::TryStatic.new(app, :root => '_site', :urls => %w[/], :try => %w[.html index.html /index.html])

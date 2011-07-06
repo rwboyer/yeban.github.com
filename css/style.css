@@ -132,3 +132,14 @@ body {
   background-color: #555;
   color: #eaeaea;
 }
+
+.not-found{
+  border: 1px solid #CCCCCC;
+  color: #888;
+  font-size: 1.5em;
+}
+
+.not-found img{
+  float: left;
+  margin: 0 0 15px 15px;
+}
