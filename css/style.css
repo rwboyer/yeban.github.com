@@ -18,7 +18,7 @@ body {
 }
 
 .container {
-  width: 950px;
+  width: 1020px;
   margin: 0 auto;
   display: block;
 }
@@ -35,11 +35,10 @@ body {
 }
 
 .sidebar {
-  background-color: #E1E1E1;
   float: left;
   margin-left: 10px;
   margin-top: 20px;
-  width: 190px;
+  width: 300px;
 }
 
 .footer {
@@ -118,9 +117,16 @@ body {
 }
 
 .sidebar ul {
+  background-color: #E1E1E1;
   list-style: none;
   margin: 4px 0 0;
   padding: 10px 10px 10px 0;
+}
+
+.cloud {
+  background-color: #E1E1E1;
+  margin: 4px 0 0;
+  padding: 10px;
 }
 
 .sidebar ul li a {
