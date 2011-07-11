@@ -1,7 +1,7 @@
 --- 
 layout: post
 title: About.me
-categories: misc
+tags: [misc]
 author: yeban
 ---
 
