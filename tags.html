@@ -1,0 +1,21 @@
+---
+layout: main
+---
+<div class='posts'>
+  {% for tag in site.tags %}
+    {% assign name  = tag[0] %}
+    {% assign posts = tag[1] %}
+    <div class="post">
+      <h3 id={{ name }} class='post-title'><a href='/tags.html#{{name}}'>{{ name }}</a></h3>
+      <div class='post-text'>
+      <ul>
+        {% for post in posts %}
+          <li>
+          <a href="{{ post.id }}.html">{{ post.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+      </div>
+    </div>
+  {% endfor %}
+</div>
