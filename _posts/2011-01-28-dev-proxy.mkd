@@ -1,0 +1,11 @@
+--- 
+layout: post
+title: Behind proxy workflow (for Zsh)
+published: false
+tags: [misc]
+author: yeban
+---
+
+My college firewall is very restrictive. You can't access anything over it except `http`, and `https`. No `ssh`, no `git`, no `irc`, no nothing, only `http`, and `https`. Obviously, there are ways to get past the dumb firewall - a secret (<<wink>>) login on one of the machines (in the departments, or the CIC) that has previliged access. Then setup a socks server on localhost with `ssh -D` and socksify all your connections with `proxychains`, or `socksify (dante-client)`. I use `proxychains`. However, typing `proxychains` before every command irks me off, firstly because it does not play well with Zsh's beautiful command line completion, and secondly because it looks retarded.
+
+Now, `proxychains` works by setting LD\_PRELOAD environment variable for the process to one of its own library that fools the program into thinking that it is directly co
