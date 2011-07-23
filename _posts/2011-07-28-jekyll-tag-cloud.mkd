@@ -1,0 +1,63 @@
+---
+layout: post
+title: Jekyll - Tag Cloud
+tags: [jekyll]
+author: yeban
+---
+
+Tag clouds are great at visually summarizing what you write about. I added one
+to my blog some time back. The basic functionality is in the form of a simple
+[Jekyll plugin][1]. It defines a `tag_cloud` tag which is rendered by Liquid
+into a tag cloud:
+
+{% highlight html %}
+  <div class='cloud'>
+    {% raw %} {% tag_cloud %} {% endraw %}
+  </div>
+{% endhighlight %}
+
+The tag cloud itself is a collection of anchor tags, styled dynamically with
+the `font-size` CSS property. The range of values, and unit to use for
+`font-size` can be specified with a very simple syntax:
+
+      {% raw %} {% tag_cloud font-size: 0.8 - 1.8em %} {% endraw %}
+
+In the above example, the `font-size` varies from 0.8em for the tag with lowest
+frequency, to 1.8em for the tag with highest frequency and is automatically
+formatted to use one decimal place. For two decimal places we would have
+specified the `font-size` argument as:
+
+      {% raw %} {% tag_cloud font-size: 0.80 - 1.80em %} {% endraw %}
+
+The plugin assumes a default `font-size` distribution of `70 - 170%`.
+
+[Logarithmic distribution][2] is used to calculate the `font-size` for each
+tag. The tag cloud comes out much better with a logarithmic distribution than
+with a linear distribution. The difference is particularly apparent when one
+tag has been used much more frequently than the other.
+
+Tags that have been used less than a certain number of times can be filtered
+out from the tag cloud with the optional `threshold` parameter:
+
+      {% raw %} {% tag_cloud threshold: 2%} {% endraw %}
+
+So the previous tag cloud will only have tags with a frequency greater than or
+equal to two. The default value for `threshold` is one.
+
+Both the parameters can be clubbed together ofcourse:
+
+      {% raw %} {% tag_cloud font-size: 50 - 100%, threshold: 2%} {% endraw %}
+
+The links in the tag cloud point to a [tags page][3] that enumerates all tags,
+and their corresponding posts. I found this approach to be much simpler than
+writing a Jekyll Generator plugin to generate index page for each tag.
+
+I tried to animate the tag cloud too, using jQuery, but wasn't very successful.
+I will probably give it another go sometime later. For the time being, I tried
+to compensate for the lack of animation by randomizing the order of the tags
+every time the tag cloud is generated. Not the brightest idea, I know, but I
+like the result.
+
+[1]: https://github.com/yeban/weblog/blob/master/_plugins/tag_cloud.rb
+[2]: http://dburke.info/blog/logarithmic-tag-clouds/
+[3]: http://yeban.in/tags.html
